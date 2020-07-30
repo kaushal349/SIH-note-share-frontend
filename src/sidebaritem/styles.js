@@ -1,4 +1,13 @@
 const styles = theme => ({
+
+  nested: {
+    paddingLeft: theme.spacing(6),
+    cursor: 'pointer',
+
+    '&:hover': {
+      borderLeft: '5px solid #2ecc71'
+    },
+  },
   active : {
     backgroundColor : '',
   },
@@ -6,7 +15,7 @@ const styles = theme => ({
       cursor: 'pointer',
 
       '&:hover': {
-        borderRight: '5px solid #2ecc71'
+        borderLeft: '5px solid #2ecc71'
       },
  
     
@@ -15,14 +24,24 @@ const styles = theme => ({
       maxWidth: '100%'
     },  
     deleteIcon: {
-      position: 'absolute',
       right: '5px',
       top: 'calc(50% - 15px)',
       '&:hover': {
         color: 'red'
       }
     },
-    addIcon : {
+    AddIcon : {
+      right: '5px',
+      '&:hover': {
+        color: 'green'
+      }
+    },
+
+    list : {
+    color: "grey", 
+      '&:hover' : {
+        color : "black"
+      }
     }
   });
   

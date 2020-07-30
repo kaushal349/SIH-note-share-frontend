@@ -29,7 +29,7 @@ const styles = theme => ({
     editorContainer: {
       height: '720px',
       boxSizing: 'border-box',
-      marginTop : '60px'
+      //marginTop : '60px'
 
     }
   });

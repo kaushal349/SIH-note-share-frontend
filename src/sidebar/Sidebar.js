@@ -20,9 +20,9 @@ class Sidebar extends Component {
   }
   render() {
 
-    const { notes, classes, selectedNoteIndex } = this.props;
+    const { notebooks , classes, selectedNotebookIndex } = this.props;
 
-    if (notes) {
+    if (notebooks) {
       return (
         <div className={classes.sidebarContainer} style={{ backgroundColor: '#fff', padding: '0px 0px' }}>
 
@@ -44,15 +44,18 @@ class Sidebar extends Component {
           <List >
 
             {
-              notes.map((_note, _index) => {
+              notebooks.map((_note, _index) => {
                 return (
                   <div key={_index}>
                     <SidebarItem
                       _note={_note}
                       _index={_index}
-                      selectedNoteIndex={selectedNoteIndex}
-                      selectNote={this.selectNote}
-                      deleteNote={this.deleteNote}>
+                      selectedNotebookIndex={selectedNotebookIndex}
+                      selectNotebook={this.selectNotebook}
+                    //  deleteNote = {this.deleteNote}
+                      deleteNotebook= {this.deleteNotebook}
+                      selectNote = {this.selectNote}
+                      >
                     </SidebarItem>
                   </div>
                 )
@@ -70,7 +73,7 @@ class Sidebar extends Component {
                 </input>
                 <Button
                   className={classes.newNoteSubmitBtn}
-                  onClick={this.newNote}>Add Note</Button>
+                  onClick={this.newNotebook}>Add Note</Button>
               </div> :
               null
           }
@@ -88,12 +91,16 @@ class Sidebar extends Component {
   updateTitle = (txt) => {
     this.setState({ title: txt });
   }
-  newNote = () => {
-    this.props.newNote(this.state.title);
+  newNotebook = () => {
+    this.props.newNotebook(this.state.title);
     this.setState({ title: null, addingNote: false });
   }
+  
   selectNote = (n, i) => this.props.selectNote(n, i);
-  deleteNote = (note) => this.props.deleteNote(note);
+  
+  deleteNotebook = (note) => this.props.deleteNotebook(note);
+
+  selectNotebook = (n, i) => this.props.selectNotebook(n , i )
 
 }
 

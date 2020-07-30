@@ -19,16 +19,16 @@ class Editor extends Component {
       this.setState({
         text: this.props.selectedNote.body,
         title: this.props.selectedNote.title,
-        id: this.props.selectedNote.id
+        id: this.props.selectedNoteIndex
       });
     }
   
     componentDidUpdate = () => {
-      if(this.props.selectedNote.id !== this.state.id) {
+      if(this.props.selectedNoteIndex !== this.state.id) {
         this.setState({
           text: this.props.selectedNote.body,
           title: this.props.selectedNote.title,
-          id: this.props.selectedNote.id
+          id: this.props.selectedNoteIndex
         });
       }
     }
@@ -84,7 +84,7 @@ class Editor extends Component {
       [{ 'color': [] }, { 'background': [] }],
       [{'list': 'ordered'}, {'list': 'bullet'}, 
        {'indent': '-1'}, {'indent': '+1'}],
-      ['link','image', 'video'],
+      ['image', 'video'],
       ['clean']
     ],
     clipboard: {
@@ -100,6 +100,6 @@ class Editor extends Component {
     'header', 'font', 'size','code-block',
     'bold', 'italic', 'underline', 'strike', 'blockquote',
     'list', 'bullet', 'indent','color','background',
-    'link','image' , 'video','clean'
+    'image' , 'video','clean'
   ]
   

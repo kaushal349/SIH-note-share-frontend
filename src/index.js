@@ -1,11 +1,11 @@
-import React,{Component} from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 //import * as serviceWorker from './serviceWorker';
 // import { firestore } from 'firebase';
- import { BrowserRouter  as Router , Route} from "react-router-dom";
- import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
 import { CircularProgress } from "@material-ui/core";
 
 
@@ -23,13 +23,13 @@ var firebaseConfig = {
   appId: "1:192403779073:web:3ab4c8d77df20091cc5a00",
   measurementId: "G-SB2KC6FQCN"
 };
-  firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig);
 
 
 class Index extends Component {
 
-  state = { 
-    isSignedIn: false, 
+  state = {
+    isSignedIn: false,
     uid: ""
   }
   uiConfig = {
@@ -48,34 +48,42 @@ class Index extends Component {
 
   componentDidMount = () => {
     firebase
-    .auth()
-    .onAuthStateChanged(user => {
-      this.setState({ isSignedIn: !!user })
-      console.log("user", user)
-      this.setState({uid : user.uid })
-    })
+      .auth()
+      .onAuthStateChanged(user => {
+        this.setState({ isSignedIn: !!user })
+        console.log("user", user)
+        this.setState({ uid: user.uid })
+      })
   }
-  
+
 
   render() {
     return (
       <div>
         {this.state.isSignedIn ? (
-          
+
           console.log("signed in"),
           console.log(this.state.uid),
-          (this.state.uid != ""  ? (
-            <App Uid = {this.state.uid} />
-          ) : ( <CircularProgress /> )
-            
-          ) 
+          (this.state.uid !== "" ? (
+            <App Uid={this.state.uid} />
+          ) : (<CircularProgress />)
+
+          )
         ) : (
-          console.log("not signed in"),
-          <StyledFirebaseAuth
-            uiConfig={this.uiConfig}
-            firebaseAuth={firebase.auth()}
-          />
-        )}
+            <div className = "banner" >
+              <div className = "layer">
+              <p className = "title">Notify</p>
+              <p className="line anim-typewriter">Make Notes Like Never before !!</p>
+              <StyledFirebaseAuth className="auth"
+                uiConfig={this.uiConfig}
+                firebaseAuth={firebase.auth()}
+              />
+              </div>
+            
+
+            </div>
+
+          )}
 
       </div>
     )
@@ -85,7 +93,7 @@ class Index extends Component {
 export default Index
 
 ReactDOM.render(
-  <Index />,document.getElementById("root")
+  <Index />, document.getElementById("root")
 );
 
 

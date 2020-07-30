@@ -27,13 +27,13 @@ const styles = theme => ({
       margin: theme.spacing(2),
     },
     sidebarContainer: {
-      marginTop: '70px',
+      //marginTop: '70px',
       width: '300px',
       height: '720px',
       boxSizing: 'border-box',
       float: 'left',
       overflowY: 'hidden',
-      overflowX: 'hidden',
+      overflowX: 'auto',
       boxShadow: '3px 3px 5px #9E9E9E',
 
     },
