@@ -32,7 +32,7 @@ class SidebarItem extends Component {
       notes: null,
       selectNotebookid: null,
       selectedNoteIndex: null,
-      selectNoteid:null,
+      selectNoteid: null,
       selectedNote: null,
       selectedNotebook: null,
       visible: false,
@@ -40,9 +40,9 @@ class SidebarItem extends Component {
     }
   }
 
-  onFinish =  (values) => {
+  onFinish = (values) => {
     console.log('Success:', values);
-   this.newNote(values.title, this.state.tags)
+    this.newNote(values.title, this.state.tags)
   };
 
   handleCancel = (e) => {
@@ -80,11 +80,12 @@ class SidebarItem extends Component {
       });
 
     await this.setState({ selectNotebookid: note.id });
-   // console.log(this.state.selectNotebookid);
+    // console.log(this.state.selectNotebookid);
 
   };
 
   render() {
+    const options = { weekday: 'long', month: 'long', day: 'numeric' };
 
     const { _index, _note, classes, selectedNotebookIndex } = this.props;
     const title = (
@@ -165,7 +166,7 @@ class SidebarItem extends Component {
             <BookIcon style={{ minWidth: "40px" }} />
           </ListItemIcon>
           <ListItemText
-        
+
             primary={<Typography type="body2" style={{ color: 'black' }}> {_note.title}</Typography>}
           >
 
@@ -186,7 +187,7 @@ class SidebarItem extends Component {
             </Popover>
           </ListItemIcon>
         </ListItem>
-        <Collapse in={this.state.open } timeout="auto" unmountOnExit collapsedHeight="0px">
+        <Collapse in={this.state.open} timeout="auto" unmountOnExit collapsedHeight="0px">
 
 
           {this.state.notes ?
@@ -204,11 +205,28 @@ class SidebarItem extends Component {
                       <Typography>
                         {data.title}
                       </Typography>
-                    } />
+                    }
+                    
+                      secondary={
+data.timestamp ? (
+  <div >
+  <Typography>
+
+   {data.timestamp.toDate().toLocaleDateString(undefined , options)}
+ </Typography>
+
+
+</div>
+) : (
+  null
+)
+
+                      }
+                    />
                     <ListItemIcon>
                       <DeleteIcon
                         className={classes.deleteIcon}
-                        onClick={() => this.deleteNote(data,index)} />
+                        onClick={() => this.deleteNote(data, index)} />
                     </ListItemIcon>
                   </ListItem>
                 </List>
@@ -241,9 +259,10 @@ class SidebarItem extends Component {
   selectNote = (n, i) => {
     console.log(n, i);
     this.setState({ selectedNote: n, selectedNoteIndex: i })
-    this.setState({open : true})
+    this.setState({ open: true })
     this.props.selectNote(n, i);
-    
+    console.log();
+
   }
 
 
@@ -259,18 +278,18 @@ class SidebarItem extends Component {
     }
   }
 
-  deleteNote = async (note,index) => {
+  deleteNote = async (note, index) => {
     if (window.confirm(`Are you sure you want to delete: ${note.title}`)) {
       message.success('Click on Yes');
-      
+
       const noteIndex = this.state.notes.indexOf(note);
       console.log(noteIndex);
       console.log(index)
       await this.setState({ notes: this.state.notes.filter(_note => _note !== note) });
       if (index === noteIndex) {
         this.setState({ selectedNoteIndex: null, selectedNote: null });
-       //  console.log(this.state.selectedNoteIndex);
-        this.selectNote(this.state.selectedNote,this.state.selectedNoteIndex)
+        //  console.log(this.state.selectedNoteIndex);
+        this.selectNote(this.state.selectedNote, this.state.selectedNoteIndex)
       }
       else {
         this.state.notes.length > 1 ?

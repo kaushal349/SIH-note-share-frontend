@@ -1,7 +1,7 @@
 const styles = theme => ({
 
   nested: {
-    paddingLeft: theme.spacing(6),
+    paddingLeft: theme.spacing(4),
     cursor: 'pointer',
 
     '&:hover': {

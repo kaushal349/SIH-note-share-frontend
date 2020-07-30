@@ -4,6 +4,11 @@ import BorderColorIcon from '@material-ui/icons/BorderColor';
 import { withStyles } from '@material-ui/core/styles';
 import styles from './styles'
 import React, { Component } from 'react'
+import Grid from '@material-ui/core/Grid';
+import Input from '@material-ui/core/Input';
+import { Badge } from 'antd';
+import Index from '..';
+import { Typography } from '@material-ui/core';
 
 class Editor extends Component {
     constructor() {
@@ -11,43 +16,83 @@ class Editor extends Component {
       this.state = {
         text: '',
         title: '',
-        id: ''
+        id: '',
+        tags: '',
+
       };
     }
-  
+
     componentDidMount = () => {
       this.setState({
         text: this.props.selectedNote.body,
         title: this.props.selectedNote.title,
-        id: this.props.selectedNoteIndex
+        id: this.props.selectedNoteIndex,
+        tags : this.props.selectedNote.tags
       });
     }
-  
+
     componentDidUpdate = () => {
       if(this.props.selectedNoteIndex !== this.state.id) {
         this.setState({
           text: this.props.selectedNote.body,
           title: this.props.selectedNote.title,
-          id: this.props.selectedNoteIndex
+          id: this.props.selectedNoteIndex,
+          tags : this.props.selectedNote.tags
         });
       }
     }
-  
+
     render() {
-  
+
       const { classes } = this.props;
-  
+      const colors = [
+        'pink',
+        'red',
+        'yellow',
+        'orange',
+        'cyan',
+        'green',
+        'blue',
+        'purple',
+        'geekblue',
+        'magenta',
+        'volcano',
+        'gold',
+        'lime',
+      ];
+
       return(
         <div className={classes.editorContainer}>
           <BorderColorIcon className={classes.editIcon}></BorderColorIcon>
-          <input
-            className={classes.titleInput}
+
+          <Grid item xs = {12} className={classes.titleInput}>
+          <Input
+            autoFocus = "true"
+            style = {{color : "white"}}
             placeholder='Note title...'
             value={this.state.title ? this.state.title : ''}
             onChange={(e) => this.updateTitle(e.target.value)}>
-          </input>
-          <ReactQuill 
-            value={this.state.text} 
+          </Input>
+
+
+{<div style = {{display : "flex", marginLeft : "300px"}} >
+  <Typography style = {{paddingTop : "10px"}}>
+    Tags : 
+  </Typography>
+
+ { this.state.tags ? (this.state.tags.map(tags => (
+      
+      <div key={tags}>
+                <Badge style = {{color : "white" , paddingTop : "10px", paddingLeft : "20px" , fontSize : "17px"}} color = "red" text={tags} />
+              </div>
+  ))) : (null)}
+  </div>
+}
+      
+
+            </Grid>
+          <ReactQuill
+            value={this.state.text}
             onChange={this.updateBody}
             modules={Editor.modules}
             formats={Editor.formats}
@@ -72,17 +117,17 @@ class Editor extends Component {
       })
     }, 1500);
   }
-  
+
   export default withStyles(styles)(Editor);
 
   Editor.modules = {
     toolbar: [
-      ['bold', 'italic', 'underline', 'strike'],       
+      ['bold', 'italic', 'underline', 'strike'],
       ['blockquote', 'code-block'],
       [{ 'header': '1'}, {'header': '2'}, { 'font': [] },{ 'align' : []}],
       [{size: []}],
       [{ 'color': [] }, { 'background': [] }],
-      [{'list': 'ordered'}, {'list': 'bullet'}, 
+      [{'list': 'ordered'}, {'list': 'bullet'},
        {'indent': '-1'}, {'indent': '+1'}],
       ['image', 'video'],
       ['clean']
@@ -92,7 +137,7 @@ class Editor extends Component {
       matchVisual: false,
     }
   }
-  /* 
+  /*
    * Quill editor formats
    * See https://quilljs.com/docs/formats/
    */
@@ -102,4 +147,4 @@ class Editor extends Component {
     'list', 'bullet', 'indent','color','background',
     'image' , 'video','clean'
   ]
-  
+

@@ -8,6 +8,9 @@ const styles = theme => ({
       boxShadow: '0px 0px 5px black'
     },
     titleInput: {
+      display : "flex",
+      color : "white",
+      marginLeft : "300px",
       height: '50px',
       boxSizing: 'border-box',
       border: 'none',
@@ -15,7 +18,6 @@ const styles = theme => ({
       fontSize: '20px',
       width: 'calc(100% - 300px)',
       backgroundColor: '#29487d',
-      color: 'white',
       paddingLeft: '50px',
     },
     editIcon: {
