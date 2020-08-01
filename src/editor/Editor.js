@@ -76,7 +76,7 @@ class Editor extends Component {
             <Select mode="tags" style={{ width: '500px', marginLeft: "5px", marginTop: "5px" }} placeholder="Tags"
               onChange={this.handleChange}
               allowClear = {true}
-              value={this.state.tags ? this.state.tags : ''}
+              value={this.state.tags ? this.state.tags : null }
             >
             </Select>
 

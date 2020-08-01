@@ -1,9 +1,8 @@
 const styles = theme => ({
     root: {
       backgroundColor: theme.palette.background.paper,
-    
       height: 'calc(100% - 35px)',
-      position: 'absolute',
+      position: 'relative',
       left: '0',
       width: '300px',
       boxShadow: ' var(--box-shadow)',

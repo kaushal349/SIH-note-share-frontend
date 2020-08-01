@@ -20,28 +20,25 @@ class Sidebar extends Component {
   }
   render() {
 
-    const { notebooks , classes, selectedNotebookIndex } = this.props;
+    const { notebooks, classes, selectedNotebookIndex } = this.props;
 
     if (notebooks) {
       return (
         <div className={classes.sidebarContainer} style={{ backgroundColor: '#fff', padding: '0px 0px' }}>
 
-<div style = {{display : 'flex',padding: "10px 10px"}}>
+          <div style={{ display: 'flex', padding: "10px 10px", justifyContent : 'space-around'}}>
 
-<Typography style={{ fontWeight: "bold", display: "flex" }}>
-            <h2 style = {{marginTop : "9px"}} >Notes</h2>
+            <Typography style={{ fontWeight: "bold" }}>
+              <h2 style={{ marginTop: "9px" }} >Notes</h2>
+            </Typography>
 
-            {/* <AddIcon style={{ marginLeft: "auto", fontSize: "30px", marginTop: "4px", cursor: "pointer" }}
-              onClick={this.newNoteBtnClick}
-              className={classes.newNoteBtn}
-            /> */}
-             </Typography>
-            <Tooltip title="Add" aria-label="add"  onClick={this.newNoteBtnClick}  >
-              <Fab color="primary" style={{ marginLeft: "auto", cursor: "pointer"}} >
+            <Tooltip title="Add" aria-label="add" onClick={this.newNoteBtnClick}  style = {{padding : '50px'}} >
+              <Fab color="primary" style={{ cursor: "pointer" }} >
                 <AddIcon />
               </Fab>
             </Tooltip>
-</div>
+            
+          </div>
           <Divider ></Divider>
           <List >
 
@@ -54,10 +51,10 @@ class Sidebar extends Component {
                       _index={_index}
                       selectedNotebookIndex={selectedNotebookIndex}
                       selectNotebook={this.selectNotebook}
-                    //  deleteNote = {this.deleteNote}
-                      deleteNotebook= {this.deleteNotebook}
-                      selectNote = {this.selectNote}
-                      >
+                      //  deleteNote = {this.deleteNote}
+                      deleteNotebook={this.deleteNotebook}
+                      selectNote={this.selectNote}
+                    >
                     </SidebarItem>
                   </div>
                 )
@@ -97,12 +94,12 @@ class Sidebar extends Component {
     this.props.newNotebook(this.state.title);
     this.setState({ title: null, addingNote: false });
   }
-  
+
   selectNote = (n, i) => this.props.selectNote(n, i);
-  
+
   deleteNotebook = (note) => this.props.deleteNotebook(note);
 
-  selectNotebook = (n, i) => this.props.selectNotebook(n , i )
+  selectNotebook = (n, i) => this.props.selectNotebook(n, i)
 
 }
 

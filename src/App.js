@@ -177,7 +177,7 @@ class App extends Component {
           doc.ref.delete();
         });
       });
-
+      this.setState({selectedNote : null})
   }
 }
 

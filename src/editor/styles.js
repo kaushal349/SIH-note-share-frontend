@@ -31,6 +31,7 @@ const styles = theme => ({
     editorContainer: {
       height: '720px',
       boxSizing: 'border-box',
+      paddingLeft : '5px'
       //marginTop : '60px'
 
     }
