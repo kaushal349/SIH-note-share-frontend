@@ -12,6 +12,7 @@ html, body {
 #evernote-container {
   height: 100%;
   box-sizing: border-box;
+
 }
 .app-container {
   height: 100%;
@@ -25,12 +26,15 @@ html, body {
 }
 .ql-container {
   box-sizing: border-box;
-  height: calc(100% - 42px);
-  overflow-y: scroll;
+  height: calc(100% - 210px);
+  overflow-y: auto;
 }
 .ql-editor {
   cursor: text;
 }
+.ql-editor li{
+  color: black;
+  }
 .MuiListItem-root.Mui-selected {
   background-color: #d4d8e8 !important;
 }

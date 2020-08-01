@@ -1,7 +1,8 @@
 const styles = (theme) => ({
 	root: {
         display: 'flex',
-	},
+  },
+
 	appBar: {
 		zIndex: theme.zIndex.drawer + 1
     },
@@ -38,6 +39,11 @@ const styles = (theme) => ({
     },
     searchBar: { 
       backgroundColor : "#3f51b5",
+    },
+    title : {
+      fontFamily:
+      '-apple-system,system-ui,BlinkMacSystemFont,' +
+      '"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif',
     },
 	
 	toolbar: theme.mixins.toolbar

@@ -26,20 +26,28 @@ class Sidebar extends Component {
       return (
         <div className={classes.sidebarContainer} style={{ backgroundColor: '#fff', padding: '0px 0px' }}>
 
-          <Typography style={{ fontWeight: "bold", padding: "10px 10px", display: "flex" }}>
+<div style = {{display : 'flex',padding: "10px 10px"}}>
+
+<Typography style={{ fontWeight: "bold", display: "flex" }}>
             <h2 style = {{marginTop : "9px"}} >Notes</h2>
 
             {/* <AddIcon style={{ marginLeft: "auto", fontSize: "30px", marginTop: "4px", cursor: "pointer" }}
               onClick={this.newNoteBtnClick}
               className={classes.newNoteBtn}
             /> */}
-            
+             </Typography>
             <Tooltip title="Add" aria-label="add"  onClick={this.newNoteBtnClick}  >
-              <Fab color="primary" style={{ marginLeft: "auto", marginTop: "4px", cursor: "pointer"}} >
+              <Fab color="primary" style={{ marginLeft: "auto", cursor: "pointer"}} >
                 <AddIcon />
               </Fab>
             </Tooltip>
-          </Typography>
+</div>
+
+
+
+         
+         
+
           <Divider ></Divider>
           <List >
 

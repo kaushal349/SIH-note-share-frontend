@@ -1,5 +1,8 @@
 const styles = theme => ({
 
+  notes: {
+    height : "50%"
+  },
   nested: {
     paddingLeft: theme.spacing(4),
     cursor: 'pointer',

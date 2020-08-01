@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 //import * as serviceWorker from './serviceWorker';
 // import { firestore } from 'firebase';
-import { BrowserRouter as Router, Route } from "react-router-dom";
+//import { BrowserRouter as Router, Route } from "react-router-dom";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth"
 import { CircularProgress } from "@material-ui/core";
 

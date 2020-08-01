@@ -29,10 +29,10 @@ const styles = theme => ({
     sidebarContainer: {
       //marginTop: '70px',
       width: '300px',
-      height: '720px',
+      height: 'calc(100vh - 20px)',
       boxSizing: 'border-box',
       float: 'left',
-      overflowY: 'hidden',
+      overflowY: 'auto',
       overflowX: 'auto',
       boxShadow: '3px 3px 5px #9E9E9E',
 

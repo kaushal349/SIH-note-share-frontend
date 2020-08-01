@@ -1,28 +1,19 @@
 import React, { useState } from 'react'
 import AppBar from '@material-ui/core/AppBar';
-//import CssBaseline from '@material-ui/core/CssBaseline';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-//import withStyles from '@material-ui/core/styles/withStyles';
-//import styles from './styles'
+
 import firebase from 'firebase'
-//import ExitToAppIcon from '@material-ui/icons/ExitToApp';
-//import { Avatar } from '@material-ui/core';
-//import SearchIcon from '@material-ui/icons/Search';
-//import TextField from '@material-ui/core/TextField';
+
 
 import { fade, makeStyles } from '@material-ui/core/styles';
 import IconButton from '@material-ui/core/IconButton';
-//import Typography from '@material-ui/core/Typography';
-//import InputBase from '@material-ui/core/InputBase';
-//import Badge from '@material-ui/core/Badge';
+
 import MenuItem from '@material-ui/core/MenuItem';
 import Menu from '@material-ui/core/Menu';
-//import MenuIcon from '@material-ui/icons/Menu';
-//import SearchIcon from '@material-ui/icons/Search';
+
 import AccountCircle from '@material-ui/icons/AccountCircle';
-//import MailIcon from '@material-ui/icons/Mail';
-//import NotificationsIcon from '@material-ui/icons/Notifications';
+
 import MoreIcon from '@material-ui/icons/MoreVert';
 import { Select } from 'antd';
 import { Spin } from 'antd';
@@ -218,8 +209,8 @@ firebase
       <AppBar position="static">
         <Toolbar>
 
-          <Typography className={classes.title} variant="h6" noWrap>
-            Notify
+          <Typography className={classes.title} variant="h4" noWrap style = {{color : "white"}} >
+            NOTIFY
 
           </Typography>
           <div className={classes.search} style={{ width: "300px" }}>
@@ -296,59 +287,3 @@ firebase
 
 
 
-// export class Bar extends Component {
-// constructor(props) {
-//   super(props)
-
-//   this.state = {
-//      tag : ""
-//   }
-// }
-// onFill = () =>{
-//   this.props.selectTags(this.state.tag)
-// }
-
-
-//   render() {
-//     const { classes } = this.props;
-//     return (
-//       <div className={classes.root} >
-//         <CssBaseline />
-//         <AppBar position="fixed" className={classes.appBar}>
-//           <Toolbar>
-//             <Typography variant="h6" noWrap>
-//               Notify
-// 							</Typography>
-
-//               <form style = {{marginLeft : "auto", display : "flex"}} noValidate autoComplete="off">
-//               <TextField size = "small" id="filled-basic" label="Search..." 
-//               variant="filled"   
-//               placeholder="Search.." 
-//               name="search" 
-//               onChange = {  e => this.setState({ tag : e.target.value })} 
-//               //onChange = {this.props.selectTags(this.state.tag)} 
-//               />
-//               <SearchIcon  onClick = {this.onFill} style = {{fontSize: "30px" , marginTop : "8px" , cursor : "pointer"}}/>
-//               </form>
-
-//             <div className={classes.profileIcon}>
-//               <Avatar src={firebase.auth().currentUser.photoURL}>
-//               </Avatar>
-//               <h4 style={{ color: "white", padding: "8px 8px" }}>
-//                 {firebase.auth().currentUser.displayName}
-//               </h4>
-
-//             </div>
-//             <button className={classes.signOut}
-//               onClick={() => firebase.auth().signOut()}>
-//               <ExitToAppIcon />
-//               <h4 style={{ color: "white" }}>LogOut!</h4>
-//             </button>
-//           </Toolbar>
-//         </AppBar>
-//       </div>
-//     )
-//   }
-// }
-
-// export default withStyles(styles)(Bar);

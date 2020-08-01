@@ -85,7 +85,7 @@ class SidebarItem extends Component {
   };
 
   render() {
-    const options = { weekday: 'long', month: 'long', day: 'numeric' };
+   // const options = { weekday: 'long', month: 'long', day: 'numeric' };
 
     const { _index, _note, classes, selectedNotebookIndex } = this.props;
     const title = (
@@ -128,7 +128,7 @@ class SidebarItem extends Component {
                 <Input placeholder="Enter" />
               </Form.Item>
               <Form.Item label="Tags" name="tags">
-                <Select mode="tags" style={{ width: '90%' }} placeholder="Tags Mode" onChange={(values) => this.setState({ tags: values })} >
+                <Select mode="tags" style={{ width: '100%', paddingLeft  : "7px" }} placeholder="Tags Mode" onChange={(values) => this.setState({ tags: values })} >
                 </Select>,
               </Form.Item>
               <Form.Item >
@@ -154,9 +154,9 @@ class SidebarItem extends Component {
     );
 
     return (
-      <div key={_index}>
+      <div key={_index} >
         <ListItem
-
+  
           className={selectedNotebookIndex === _index ? classes.active : classes.listItem}
           alignItems='flex-end'
           button key="title"
@@ -193,7 +193,7 @@ class SidebarItem extends Component {
           {this.state.notes ?
 
             (this.state.notes.map((data, index) => {
-              console.log(data);
+            //  console.log(data);
               return (
                 <List key={index} component="div" disablePadding>
                   <ListItem button className={classes.nested}
@@ -207,21 +207,21 @@ class SidebarItem extends Component {
                       </Typography>
                     }
                     
-                      secondary={
-data.timestamp ? (
-  <div >
-  <Typography>
+//                       secondary={
+// data.timestamp ? (
+//   <div >
+//   <Typography>
 
-   {data.timestamp.toDate().toLocaleDateString(undefined , options)}
- </Typography>
+//    {data.timestamp.toDate().toLocaleDateString(undefined , options)}
+//  </Typography>
 
 
-</div>
-) : (
-  null
-)
+// </div>
+// ) : (
+//   null
+// )
 
-                      }
+//                       }
                     />
                     <ListItemIcon>
                       <DeleteIcon

@@ -113,6 +113,7 @@ class App extends Component {
       .update({
         title: noteObj.title,
         body: noteObj.body,
+        tags : noteObj.tags,
         timestamp: firebase.firestore.FieldValue.serverTimestamp()
       });
   }
