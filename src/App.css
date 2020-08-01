@@ -33,8 +33,11 @@ html, body {
   cursor: text;
 }
 .ql-editor li{
-  color: black;
-  }
+color: black;
+}
+.ql-editor img {
+  width: 40%;
+}
 .MuiListItem-root.Mui-selected {
   background-color: #d4d8e8 !important;
 }
