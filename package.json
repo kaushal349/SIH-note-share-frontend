@@ -1,7 +1,7 @@
 {
   "name": "my-app",
   "version": "0.1.0",
-  "main": "public/electron.js",
+  "main": "public/index.html",
   "dependencies": {
     "@material-ui/core": "^4.9.8",
     "@material-ui/icons": "^4.9.1",
@@ -10,9 +10,6 @@
     "@testing-library/user-event": "^7.2.1",
     "antd": "^4.4.3",
     "bootstrap": "^4.4.1",
-    "cross-env": "^7.0.2",
-    "electron-is-dev": "^1.2.0",
-    "electron-packager": "^14.2.1",
     "firebase": "^7.13.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
@@ -42,7 +39,7 @@
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
-      "last 1 safari version"
+        "last 1 safari version"
     ]
   }
 }

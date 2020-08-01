@@ -42,12 +42,6 @@ class Sidebar extends Component {
               </Fab>
             </Tooltip>
 </div>
-
-
-
-         
-         
-
           <Divider ></Divider>
           <List >
 

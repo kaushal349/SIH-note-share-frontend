@@ -38,7 +38,7 @@ class App extends Component {
               
           < Bar 
           selectNote = {this.selectNote} />
-          
+       
           <Sidebar
             selectedNotebookIndex={this.state.selectedNotebookIndex}
             notebooks={this.state.notebooks}
@@ -56,7 +56,10 @@ class App extends Component {
                 notes={this.state.notes}
                 noteUpdate={this.noteUpdate}>
                 </Editor> :
-                <img src={Logo} alt="background"  style = {{marginLeft: "20%"}}/>         
+                <div style = {{marginLeft: "300px",display : 'flex',justifyContent : 'center'}}>
+                  <img src={Logo} alt="background"   />
+                </div>
+                        
           }
         </div>
           
