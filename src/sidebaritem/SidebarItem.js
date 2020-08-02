@@ -22,6 +22,7 @@ import { Select } from 'antd';
 import { message } from 'antd';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import BookIcon from '@material-ui/icons/Book';
+import StarIcon from '@material-ui/icons/Star';
 
 class SidebarItem extends Component {
   constructor(props) {
@@ -36,7 +37,8 @@ class SidebarItem extends Component {
       selectedNote: null,
       selectedNotebook: null,
       visible: false,
-      tags: null
+      tags: null,
+      bookmark: false
     }
   }
 
@@ -51,6 +53,20 @@ class SidebarItem extends Component {
       visible: false,
     });
 
+  };
+  bookmarkNote = (note) => {
+    this.setState({ bookmark: !this.state.bookmark })
+
+    firebase
+      .firestore()
+      .collection("notes")
+      .doc(firebase.auth().currentUser.uid)
+      .collection("user_notes")
+      .doc(note.id)
+      .update({
+        bookmark: this.state.bookmark,
+        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+      });
   };
 
 
@@ -85,25 +101,20 @@ class SidebarItem extends Component {
   };
 
   render() {
-   // const options = { weekday: 'long', month: 'long', day: 'numeric' };
 
     const { _index, _note, classes, selectedNotebookIndex } = this.props;
+
+
     const title = (
       <div>
         <Input placeholder="title"
           onChange={(e) => this.titleUpdate(e.target.value)} />
       </div>
     );
+
+
     const content = (
       <div >
-        {/* <Popover content={title} title="Title" trigger="click">
-
-          <li style={{ display: "flex", cursor: "pointer" }}
-            className={classes.list} >
-            <EditIcon />
-          Edit
-        </li>
-        </Popover> */}
 
         <li style={{ display: "flex", cursor: "pointer" }} className={classes.list} onClick={() => {
           this.setState({ visible: true, open: false })
@@ -128,7 +139,7 @@ class SidebarItem extends Component {
                 <Input placeholder="Enter" />
               </Form.Item>
               <Form.Item label="Tags" name="tags">
-                <Select mode="tags" style={{ width: '100%', paddingLeft  : "7px" }} placeholder="Tags Mode" onChange={(values) => this.setState({ tags: values })} >
+                <Select mode="tags" style={{ width: '100%', paddingLeft: "7px" }} placeholder="Tags Mode" onChange={(values) => this.setState({ tags: values })} >
                 </Select>,
               </Form.Item>
               <Form.Item >
@@ -156,7 +167,7 @@ class SidebarItem extends Component {
     return (
       <div key={_index} >
         <ListItem
-  
+
           className={selectedNotebookIndex === _index ? classes.active : classes.listItem}
           alignItems='flex-end'
           button key="title"
@@ -193,9 +204,9 @@ class SidebarItem extends Component {
           {this.state.notes ?
 
             (this.state.notes.map((data, index) => {
-            //  console.log(data);
+              //  console.log(data);
               return (
-                <List key={index} component="div" disablePadding>
+                <List key={index} component="div" disablePadding style={{ display: 'flex', alignItems: 'center' }}>
                   <ListItem button className={classes.nested}
                     onClick={() => this.selectNote(data, data.id)}>
                     <ListItemIcon>
@@ -206,29 +217,41 @@ class SidebarItem extends Component {
                         {data.title}
                       </Typography>
                     }
-                    
-//                       secondary={
-// data.timestamp ? (
-//   <div >
-//   <Typography>
 
-//    {data.timestamp.toDate().toLocaleDateString(undefined , options)}
-//  </Typography>
+                    //                       secondary={
+                    // data.timestamp ? (
+                    //   <div >
+                    //   <Typography>
+
+                    //    {data.timestamp.toDate().toLocaleDateString(undefined , options)}
+                    //  </Typography>
 
 
-// </div>
-// ) : (
-//   null
-// )
+                    // </div>
+                    // ) : (
+                    //   null
+                    // )
 
-//                       }
+                    //                       }
                     />
                     <ListItemIcon>
+                      <Button 
+                        icon = { <StarIcon />}
+                        type= 'string'
+                        style={{  borderRadius: '50%', borderColor: 'none', padding: '0px 0px',  }}
+                        onClick={() => this.bookmarkNote(data)} >
+                       
+                      </Button>
+&nbsp;
+&nbsp;
+
                       <DeleteIcon
                         className={classes.deleteIcon}
                         onClick={() => this.deleteNote(data, index)} />
                     </ListItemIcon>
+
                   </ListItem>
+
                 </List>
               )
 
@@ -315,6 +338,7 @@ class SidebarItem extends Component {
       body: '',
       tags: tags,
       notebookID: this.state.selectNotebookid,
+
     };
     const newFromDB = await firebase
       .firestore()
@@ -326,6 +350,7 @@ class SidebarItem extends Component {
         body: note.body,
         tags: note.tags,
         notebookID: note.notebookID,
+        bookmark: false,
         timestamp: firebase.firestore.FieldValue.serverTimestamp()
       });
     const newID = newFromDB.id;

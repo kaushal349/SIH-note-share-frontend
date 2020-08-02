@@ -26,6 +26,12 @@ const styles = theme => ({
     textSection: {
       maxWidth: '100%'
     },  
+    staredIcon: {
+    color : '#cc9966',
+    },
+    notstaredIcon : {
+      color : 'primary'
+    },
     deleteIcon: {
       right: '5px',
       top: 'calc(50% - 15px)',

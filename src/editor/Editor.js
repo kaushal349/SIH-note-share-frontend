@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid';
 import Input from '@material-ui/core/Input';
 
 import { Typography } from '@material-ui/core';
-import { Select } from 'antd';
+import { Select, Button } from 'antd';
 
 
 class Editor extends Component {
@@ -67,25 +67,24 @@ class Editor extends Component {
           </Input>
 
 
-          {<div style={{ display: "flex", marginLeft: "200px" }} >
+          {
+            <div style={{ display: "flex", marginLeft: "200px" , justifyContent : 'space-around'  }} >
+            
             <Typography style={{ paddingTop: "10px" }}>
               Tags :
   </Typography>
 
 
-            <Select mode="tags" style={{ width: '500px', marginLeft: "5px", marginTop: "5px" }} placeholder="Tags"
+            <Select mode="tags" style={{ width: '300px', marginLeft: "5px", marginTop: "5px" }} placeholder="Tags"
               onChange={this.handleChange}
               allowClear = {true}
               value={this.state.tags ? this.state.tags : null }
             >
             </Select>
 
-            {/* { this.state.tags ? (this.state.tags.map(tags => (
-      
-      <div key={tags}>
-                <Badge style = {{color : "white" , paddingTop : "10px", paddingLeft : "20px" , fontSize : "17px"}} color = "red" text={tags} />
-              </div>
-  ))) : (null)} */}
+            <Button>
+              Go to link
+            </Button>
           </div>
           }
 
@@ -156,3 +155,7 @@ Editor.formats = [
   'image', 'video', 'clean'
 ]
 
+// chrome.browserAction.onClicked.addListener(function(activeTab){
+//   var newURL = "http://stackoverflow.com/";
+//   chrome.tabs.create({ url: newURL });
+// });
